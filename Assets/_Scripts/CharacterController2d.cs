@@ -6,11 +6,14 @@ public class CharacterController2d : MonoBehaviour
 	[SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
-	[SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
+	[SerializeField] private bool m_AirControl = true;                         // Whether or not a player can steer while jumping;
 	[SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;                          // A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;                // A collider that will be disabled when crouching
+	[SerializeField] private PhysicsMaterial2D noFriction;
+	[SerializeField] private PhysicsMaterial2D maxFriction;
+
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
@@ -30,9 +33,28 @@ public class CharacterController2d : MonoBehaviour
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
+	// new variable
+	private CapsuleCollider2D m_Collider2D;
+
+	private Vector2 newVelocity;
+	private Vector2 colliderSize;
+	private Vector2 slopeNormalPerp;
+
+	private float slopeDownAngle;
+	private float slopeDownAngleOld;
+	private float slopeSideAngle;
+
+	private bool m_isOnSlope;
+	private bool firstLanding;
+
+	public float slopeCheckDistance;
+	public float movementSpeed;
+
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		m_Collider2D = GetComponent<CapsuleCollider2D>();
+		colliderSize = m_Collider2D.size;
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -43,6 +65,12 @@ public class CharacterController2d : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		CheckGround();
+		CheckSlope();
+	}
+
+	private void CheckGround()
+    {
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
@@ -55,11 +83,74 @@ public class CharacterController2d : MonoBehaviour
 			{
 				m_Grounded = true;
 				if (!wasGrounded)
+                {
+					firstLanding = true;
 					OnLandEvent.Invoke();
+				}
 			}
 		}
 	}
 
+	private void CheckSlope()
+    {
+		Vector2 checkPos = transform.position - new Vector3(0f, colliderSize.y/2);
+		CheckSlopeOnVertical(checkPos);
+		CheckSlopeOnHorizontal(checkPos);
+	}
+
+	private void CheckSlopeOnHorizontal(Vector2 checkPos)
+    {
+		RaycastHit2D slopeHitFront = Physics2D.Raycast(checkPos, Vector3.right, slopeCheckDistance, m_WhatIsGround);
+		RaycastHit2D slopeHitBack = Physics2D.Raycast(checkPos, Vector3.left, slopeCheckDistance, m_WhatIsGround);
+       
+		if (slopeHitFront)
+        {
+			m_isOnSlope = true;
+			slopeSideAngle = Vector2.Angle(slopeHitFront.normal, Vector2.up);
+			Debug.DrawRay(slopeHitFront.point, Vector3.right, Color.yellow);
+		}
+		else if (slopeHitBack)
+        {
+			m_isOnSlope = true;
+			slopeSideAngle = Vector2.Angle(slopeHitBack.normal, Vector2.up);
+			Debug.DrawRay(slopeHitBack.point, Vector3.left, Color.yellow);
+		}
+        else
+        {
+			m_isOnSlope = false;
+			slopeSideAngle = 0f;
+
+		}
+    }
+
+	private void CheckSlopeOnVertical(Vector2 checkPos)
+    {
+		RaycastHit2D hit = Physics2D.Raycast(checkPos, Vector3.down, slopeCheckDistance, m_WhatIsGround);
+
+        if (hit)
+        {
+			slopeNormalPerp = Vector2.Perpendicular(hit.normal).normalized;
+			slopeDownAngle = Vector2.Angle(hit.normal, Vector2.up);
+
+			if(slopeDownAngle != slopeDownAngleOld)
+            {
+				m_isOnSlope = true;
+            }
+			slopeDownAngleOld = slopeDownAngle;
+
+			Debug.DrawRay(hit.point, slopeNormalPerp, Color.red);
+			Debug.DrawRay(hit.point, hit.normal, Color.green);
+        }
+
+		if(m_isOnSlope && Input.GetAxisRaw("Horizontal") == 0)
+        {
+			m_Rigidbody2D.sharedMaterial = maxFriction;
+        }
+        else
+        {
+			m_Rigidbody2D.sharedMaterial = noFriction;
+		}
+	}
 
 	public void Move(float move, bool crouch, bool jump)
 	{
@@ -107,12 +198,29 @@ public class CharacterController2d : MonoBehaviour
 			}
 
 			// Move the character by finding the target velocity
-			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+			//Vector3 targetVelocity = new Vector2(move * 20f, m_Rigidbody2D.velocity.y);
 			// And then smoothing it out and applying it to the character
-			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+			//m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
-			// If the input is moving the player right and the player is facing left...
-			if (move > 0 && !m_FacingRight)
+			if (m_Grounded && !m_isOnSlope)
+            {
+				if(firstLanding)
+					newVelocity.Set(move * movementSpeed, -20.0f);
+				else
+					newVelocity.Set(move * movementSpeed, 0.0f);
+			}
+            else if (m_Grounded && m_isOnSlope)
+            {
+                newVelocity.Set(-move * movementSpeed * slopeNormalPerp.x, -move * movementSpeed * slopeNormalPerp.y);
+			}
+            else if (!m_Grounded)
+            {
+                newVelocity.Set(move * movementSpeed, m_Rigidbody2D.velocity.y);
+            }
+
+            m_Rigidbody2D.velocity = newVelocity;
+            // If the input is moving the player right and the player is facing left...
+            if (move > 0 && !m_FacingRight)
 			{
 				// ... flip the player.
 				Flip();
@@ -129,6 +237,8 @@ public class CharacterController2d : MonoBehaviour
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
+			newVelocity.Set(0.0f, 0.0f);
+			m_Rigidbody2D.velocity = newVelocity;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
 	}
