@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
 
     void SwitchControl()
     {
+        CharacterInControl = (CharacterInControl + 1) % 2;
         T_CharControl.enabled = !T_CharControl.isActiveAndEnabled;
         T_playerMove.enabled = !T_playerMove.isActiveAndEnabled;
         T_characterFollow.enabled = !T_characterFollow.isActiveAndEnabled;
@@ -137,7 +138,11 @@ public class GameManager : MonoBehaviour
         B_characterFollow.enabled = !B_characterFollow.isActiveAndEnabled;
         TopPlayer.GetComponent<CapsuleCollider2D>().enabled = !TopPlayer.GetComponent<CapsuleCollider2D>().enabled;
         BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = !BottomPlayer.GetComponent<CapsuleCollider2D>().enabled;
-        
+        if(CharacterInControl == 0)
+            TopPlayer.GetComponent<Rigidbody2D>().velocity = BottomPlayer.GetComponent<Rigidbody2D>().velocity;
+        else
+            BottomPlayer.GetComponent<Rigidbody2D>().velocity = TopPlayer.GetComponent<Rigidbody2D>().velocity;
+
     }
 
     public void Die()
