@@ -35,6 +35,7 @@ public class CharacterController2d : MonoBehaviour
 
 	// new variable
 	private CapsuleCollider2D m_Collider2D;
+	private Animator animator;
 
 	private Vector2 newVelocity;
 	private Vector2 colliderSize;
@@ -47,13 +48,21 @@ public class CharacterController2d : MonoBehaviour
 	private bool m_isOnSlope;
 	private bool firstLanding;
 
+	[HideInInspector]public string currentState;
+
 	public float slopeCheckDistance;
 	public float movementSpeed;
+
+	//Animation State
+	const string PLAYER_IDLE = "Player_Idle";
+	const string PLAYER_RUN = "Player_Run";
+	const string PLAYER_JUMP = "Player_Jump";
 
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		m_Collider2D = GetComponent<CapsuleCollider2D>();
+		animator = GetComponent<Animator>();
 		colliderSize = m_Collider2D.size;
 
 		if (OnLandEvent == null)
@@ -67,6 +76,17 @@ public class CharacterController2d : MonoBehaviour
 	{
 		CheckGround();
 		CheckSlope();
+		AnimationControl();
+	}
+
+	private void AnimationControl()
+	{
+		if (!m_Grounded && !m_isOnSlope)
+			ChangeAnimationState(PLAYER_JUMP);
+		else if (m_Rigidbody2D.velocity.x != 0)
+			ChangeAnimationState(PLAYER_RUN);
+		else
+			ChangeAnimationState(PLAYER_IDLE);
 	}
 
 	private void CheckGround()
@@ -119,7 +139,6 @@ public class CharacterController2d : MonoBehaviour
         {
 			m_isOnSlope = false;
 			slopeSideAngle = 0f;
-
 		}
     }
 
@@ -204,7 +223,6 @@ public class CharacterController2d : MonoBehaviour
 
 			if (m_Grounded && !m_isOnSlope)
             {
-				Debug.Log("grounded");
 				if(firstLanding)
 					newVelocity.Set(move * movementSpeed, -20.0f);
 				else
@@ -212,12 +230,10 @@ public class CharacterController2d : MonoBehaviour
 			}
             else if (m_Grounded && m_isOnSlope)
 			{
-				Debug.Log("onslope");
 				newVelocity.Set(-move * movementSpeed * slopeNormalPerp.x, -move * movementSpeed * slopeNormalPerp.y);
 			}
             else if (!m_Grounded)
 			{
-				Debug.Log("in air");
 				newVelocity.Set(move * movementSpeed, m_Rigidbody2D.velocity.y);
             }
 
@@ -234,6 +250,7 @@ public class CharacterController2d : MonoBehaviour
 				// ... flip the player.
 				Flip();
 			}
+
 		}
 		// If the player should jump...
 		if (m_Grounded && jump)
@@ -256,5 +273,14 @@ public class CharacterController2d : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	private void ChangeAnimationState(string newState)
+    {
+		if (currentState == newState) return;
+		// play animation
+		animator.Play(newState);
+		currentState = newState;
+
 	}
 }
