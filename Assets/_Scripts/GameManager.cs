@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject TopPlayer;
     [SerializeField] private GameObject BottomPlayer;
+    [SerializeField] private UIController UICon;
     private CharacterController2d T_CharControl;
     private CharacterController2d B_CharControl;
     private PlayerMovement T_playerMove;
@@ -52,23 +54,43 @@ public class GameManager : MonoBehaviour
             }*/
             SwitchControl();
         }
+
+        //control the ui menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (currentState == GameState.Playing)
+                SwitchGameState(GameState.Pausing);
+            else if (currentState == GameState.Pausing)
+                SwitchGameState(GameState.Playing);
+        }
     }
 
     public void SwitchGameState(GameState state)
     {
+        currentState = state;
         switch (state)
         {
             case GameState.Starting:
                 break;
             case GameState.Playing:
+                UICon.Resume();
                 break;
             case GameState.Dead:
+                UICon.Death();
+                DisableCharacterController();
                 break;
             case GameState.Pausing:
+                UICon.Pause();
                 break;
             default:
                 break;
         }
+    }
+
+    private void DisableCharacterController()
+    {
+        T_CharControl.enabled = false;
+        B_CharControl.enabled = false;
     }
 
     void SwitchControl()
@@ -99,5 +121,9 @@ public class GameManager : MonoBehaviour
         }*/
     }
 
+    private void Die()
+    {
+        SwitchGameState(GameState.Dead);
+    }
     
 }

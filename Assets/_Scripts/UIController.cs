@@ -35,4 +35,10 @@ public class UIController : MonoBehaviour
         closeMenu();
         Time.timeScale = 1f;
     }
+
+    public void Death()
+    {
+        closeMenu();
+        deathMenu.SetActive(true);
+    }
 }
