@@ -114,15 +114,15 @@ public class CharacterController2d : MonoBehaviour
 
 	private void CheckSlope()
     {
-		Vector2 checkPos = transform.position - new Vector3(0f, colliderSize.y);
+		Vector2 checkPos = transform.position - new Vector3(0f, colliderSize.y / 2 * transform.localScale.y);
 		CheckSlopeOnVertical(checkPos);
-		//CheckSlopeOnHorizontal(checkPos);
+		CheckSlopeOnHorizontal(checkPos);
 	}
 
 	private void CheckSlopeOnHorizontal(Vector2 checkPos)
     {
-		RaycastHit2D slopeHitFront = Physics2D.Raycast(checkPos, Vector3.right, slopeCheckDistance, m_WhatIsGround);
-		RaycastHit2D slopeHitBack = Physics2D.Raycast(checkPos, Vector3.left, slopeCheckDistance, m_WhatIsGround);
+		RaycastHit2D slopeHitFront = Physics2D.Raycast(checkPos, Vector2.right, slopeCheckDistance, m_WhatIsGround);
+		RaycastHit2D slopeHitBack = Physics2D.Raycast(checkPos, Vector2.left, slopeCheckDistance, m_WhatIsGround);
        
 		if (slopeHitFront)
 		{
@@ -134,14 +134,17 @@ public class CharacterController2d : MonoBehaviour
 		{
 			m_isOnSlope = true;
 			slopeSideAngle = Vector2.Angle(slopeHitBack.normal, Vector2.up);
-			Debug.DrawRay(checkPos, slopeHitBack.point, Color.white);
+			Debug.DrawLine(checkPos, slopeHitBack.point, Color.white);
 		}
         else
         {
 			m_isOnSlope = false;
 			slopeSideAngle = 0f;
 		}
-    }
+		if (slopeSideAngle >= 90f) 
+			m_isOnSlope = false;
+
+	}
 
 	private void CheckSlopeOnVertical(Vector2 checkPos)
     {
