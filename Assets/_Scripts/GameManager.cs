@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         B_characterFollow = BottomPlayer.GetComponent<CharacterFollow>();
         //CharacterInControl = 0;
         //SwitchControl();
+        InitialControl();
     }
 
     // Update is called once per frame
@@ -93,22 +94,18 @@ public class GameManager : MonoBehaviour
         B_CharControl.enabled = false;
     }
 
-    void SwitchControl()
+    void InitialControl()
     {
-        T_CharControl.enabled = !T_CharControl.isActiveAndEnabled;
-        T_playerMove.enabled = !T_playerMove.isActiveAndEnabled;
-        T_characterFollow.enabled = !T_characterFollow.isActiveAndEnabled;
-        B_CharControl.enabled = !B_CharControl.isActiveAndEnabled; 
-        B_playerMove.enabled = !B_playerMove.isActiveAndEnabled;
-        B_characterFollow.enabled = !B_characterFollow.isActiveAndEnabled;
-        /*if (CharacterInControl == 0)
+        if (CharacterInControl == 0)
         {
             T_CharControl.enabled = true;
             T_playerMove.enabled = true;
             T_characterFollow.enabled = false;
             B_CharControl.enabled = false;
             B_playerMove.enabled = false;
-            B_characterFollow.enabled = true;   
+            B_characterFollow.enabled = true;
+            TopPlayer.GetComponent<CapsuleCollider2D>().enabled = true;
+            BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = false;
         }
         else
         {
@@ -118,7 +115,22 @@ public class GameManager : MonoBehaviour
             B_CharControl.enabled = true;
             B_playerMove.enabled = true;
             B_characterFollow.enabled = false;
-        }*/
+            TopPlayer.GetComponent<CapsuleCollider2D>().enabled = false;
+            BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = true;
+        }
+    }
+
+    void SwitchControl()
+    {
+        T_CharControl.enabled = !T_CharControl.isActiveAndEnabled;
+        T_playerMove.enabled = !T_playerMove.isActiveAndEnabled;
+        T_characterFollow.enabled = !T_characterFollow.isActiveAndEnabled;
+        B_CharControl.enabled = !B_CharControl.isActiveAndEnabled; 
+        B_playerMove.enabled = !B_playerMove.isActiveAndEnabled;
+        B_characterFollow.enabled = !B_characterFollow.isActiveAndEnabled;
+        TopPlayer.GetComponent<CapsuleCollider2D>().enabled = !TopPlayer.GetComponent<CapsuleCollider2D>().enabled;
+        BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = !BottomPlayer.GetComponent<CapsuleCollider2D>().enabled;
+        
     }
 
     private void Die()

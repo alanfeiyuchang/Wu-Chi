@@ -22,5 +22,10 @@ public class PlayerCollider : MonoBehaviour
         {
             Debug.Log("I hit spike");
         }
+
+        if (collision.CompareTag("bomb"))
+        {
+            Debug.Log("Bomb!!!!!!!!!!!");
+        }
     }
 }
