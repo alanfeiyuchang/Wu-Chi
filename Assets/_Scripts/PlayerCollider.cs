@@ -21,7 +21,7 @@ public class PlayerCollider : MonoBehaviour
         if (collision.gameObject.tag == "spike")
         {
             GameManager.instance.Die();
-            Debug.Log("spike!!");
+            Debug.Log("spike!!" + collision.gameObject.name);
         }
 
         if (collision.CompareTag("bomb"))

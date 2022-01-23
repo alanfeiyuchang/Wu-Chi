@@ -49,7 +49,7 @@ public class CharacterController2d : MonoBehaviour
 
 	[HideInInspector]public string currentState;
 
-	[HideInInspector] public bool m_FacingRight = true;
+	[HideInInspector]public bool m_FacingRight = true;
 
 	public float slopeCheckDistance;
 	public float movementSpeed;
