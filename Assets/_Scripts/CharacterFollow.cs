@@ -7,6 +7,7 @@ public class CharacterFollow : MonoBehaviour
     public GameObject followTarget;
     private Animator animator;
     private CharacterController2d copiedCharacterControl;
+    private CharacterController2d m_CharacterControl;
 
     private string currentState;
 
@@ -19,6 +20,7 @@ public class CharacterFollow : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         copiedCharacterControl = followTarget.GetComponent<CharacterController2d>();
+        m_CharacterControl = GetComponent<CharacterController2d>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class CharacterFollow : MonoBehaviour
         }
         transform.position = new Vector3(followTarget.transform.position.x, yValue,transform.position.z);
         transform.localScale = followTarget.transform.localScale;
+        m_CharacterControl.m_FacingRight = copiedCharacterControl.m_FacingRight;
 
         string copiedAnimation = copiedCharacterControl.currentState;
         ChangeAnimationState(copiedAnimation);
