@@ -32,12 +32,12 @@ public class CharacterFollow : MonoBehaviour
         if(followTargetInt == 0)
         {
             yValue = followTarget.transform.position.y - 5;
-            if (yValue < -4.227f) { yValue = -4.227f; }
+            if (yValue < -4.326995f) { yValue = -4.326995f; }
         }
         else
         {
             yValue = followTarget.transform.position.y + 5;
-            if (yValue < 0.773006f) { yValue = 0.773006f; }
+            if (yValue < 0.6730059f) { yValue = 0.6730059f; }
         }
         
         transform.position = new Vector3(followTarget.transform.position.x, yValue,transform.position.z);
