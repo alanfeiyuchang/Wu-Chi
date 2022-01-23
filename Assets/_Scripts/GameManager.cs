@@ -107,14 +107,15 @@ public class GameManager : MonoBehaviour
     {
         if (CharacterInControl == 0)
         {
+            //TopPlayer.GetComponent<CapsuleCollider2D>().enabled = true;
+            //BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = false;
             T_CharControl.enabled = true;
             T_playerMove.enabled = true;
             T_characterFollow.enabled = false;
             B_CharControl.enabled = false;
             B_playerMove.enabled = false;
             B_characterFollow.enabled = true;
-            TopPlayer.GetComponent<CapsuleCollider2D>().enabled = true;
-            BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = false;
+            
         }
         else
         {
@@ -124,8 +125,8 @@ public class GameManager : MonoBehaviour
             B_CharControl.enabled = true;
             B_playerMove.enabled = true;
             B_characterFollow.enabled = false;
-            TopPlayer.GetComponent<CapsuleCollider2D>().enabled = false;
-            BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = true;
+            //TopPlayer.GetComponent<CapsuleCollider2D>().enabled = false;
+            //BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = true;
         }
     }
 
@@ -138,8 +139,8 @@ public class GameManager : MonoBehaviour
         B_CharControl.enabled = !B_CharControl.isActiveAndEnabled; 
         B_playerMove.enabled = !B_playerMove.isActiveAndEnabled;
         B_characterFollow.enabled = !B_characterFollow.isActiveAndEnabled;
-        TopPlayer.GetComponent<CapsuleCollider2D>().enabled = !TopPlayer.GetComponent<CapsuleCollider2D>().enabled;
-        BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = !BottomPlayer.GetComponent<CapsuleCollider2D>().enabled;
+        //TopPlayer.GetComponent<CapsuleCollider2D>().enabled = !TopPlayer.GetComponent<CapsuleCollider2D>().enabled;
+        //BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = !BottomPlayer.GetComponent<CapsuleCollider2D>().enabled;
         if(CharacterInControl == 0)
             TopPlayer.GetComponent<Rigidbody2D>().velocity = BottomPlayer.GetComponent<Rigidbody2D>().velocity;
         else

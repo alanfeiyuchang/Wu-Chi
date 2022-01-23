@@ -5,7 +5,9 @@ using UnityEngine;
 public class CharacterFollow : MonoBehaviour
 {
     public GameObject followTarget;
+    public int followTargetInt;
     private Animator animator;
+
     private CharacterController2d copiedCharacterControl;
     private CharacterController2d m_CharacterControl;
 
@@ -27,14 +29,17 @@ public class CharacterFollow : MonoBehaviour
     void Update()
     {
         float yValue;
-        if(followTarget.transform.position.y > 0)
+        if(followTargetInt == 0)
         {
             yValue = followTarget.transform.position.y - 5;
+            if (yValue < -4.227f) { yValue = -4.227f; }
         }
         else
         {
             yValue = followTarget.transform.position.y + 5;
+            if (yValue < 0.773006f) { yValue = 0.773006f; }
         }
+        
         transform.position = new Vector3(followTarget.transform.position.x, yValue,transform.position.z);
         transform.localScale = followTarget.transform.localScale;
         m_CharacterControl.m_FacingRight = copiedCharacterControl.m_FacingRight;
