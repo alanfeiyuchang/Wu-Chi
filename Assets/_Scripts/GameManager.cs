@@ -13,6 +13,17 @@ public class GameManager : MonoBehaviour
     private CharacterFollow T_characterFollow;
     private CharacterFollow B_characterFollow;
     private int CharacterInControl;
+
+    public enum GameState
+    {
+        Starting,
+        Playing,
+        Dead,
+        Pausing
+    }
+
+    public GameState currentState = GameState.Playing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +54,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SwitchGameState(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.Starting:
+                break;
+            case GameState.Playing:
+                break;
+            case GameState.Dead:
+                break;
+            case GameState.Pausing:
+                break;
+            default:
+                break;
+        }
+    }
+
     void SwitchControl()
     {
         T_CharControl.enabled = !T_CharControl.isActiveAndEnabled;
@@ -70,4 +98,6 @@ public class GameManager : MonoBehaviour
             B_characterFollow.enabled = false;
         }*/
     }
+
+    
 }
