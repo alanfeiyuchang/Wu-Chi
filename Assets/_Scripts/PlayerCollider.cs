@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
+    private List<Collider2D> colList = new List<Collider2D>();
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +30,26 @@ public class PlayerCollider : MonoBehaviour
             //GameManager.instance.Die();
             Debug.Log("bomb");
         }
+
+        if (collision.CompareTag("obstacle"))
+        {
+            if (!colList.Contains(collision))
+                colList.Add(collision);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("obstacle"))
+        {
+            Debug.Log("Remove");
+            if (colList.Contains(collision))
+                colList.Remove(collision);
+        }
+    }
+
+    public bool CanSwitch()
+    {
+        return colList.Count == 0;
     }
 }
