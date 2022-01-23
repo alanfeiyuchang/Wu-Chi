@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     private CharacterFollow T_characterFollow;
     private CharacterFollow B_characterFollow;
     private int CharacterInControl;
+    public static GameManager instance;
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public enum GameState
     {
@@ -91,6 +96,8 @@ public class GameManager : MonoBehaviour
     private void DisableCharacterController()
     {
         T_CharControl.enabled = false;
+        T_playerMove.enabled = false;
+        B_playerMove.enabled = false;
         B_CharControl.enabled = false;
     }
 
@@ -133,7 +140,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    private void Die()
+    public void Die()
     {
         SwitchGameState(GameState.Dead);
     }
