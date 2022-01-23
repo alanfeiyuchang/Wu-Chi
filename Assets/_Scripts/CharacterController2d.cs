@@ -105,12 +105,14 @@ public class CharacterController2d : MonoBehaviour
        
 		if (slopeHitFront)
         {
+			Debug.Log("Front");
 			m_isOnSlope = true;
 			slopeSideAngle = Vector2.Angle(slopeHitFront.normal, Vector2.up);
 			Debug.DrawRay(slopeHitFront.point, Vector3.right, Color.yellow);
 		}
 		else if (slopeHitBack)
-        {
+		{
+			Debug.Log("Back");
 			m_isOnSlope = true;
 			slopeSideAngle = Vector2.Angle(slopeHitBack.normal, Vector2.up);
 			Debug.DrawRay(slopeHitBack.point, Vector3.left, Color.yellow);
