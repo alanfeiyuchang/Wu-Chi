@@ -143,7 +143,7 @@ public class CharacterController2d : MonoBehaviour
         }
 
 		if(m_isOnSlope && Input.GetAxisRaw("Horizontal") == 0)
-        {
+		{
 			m_Rigidbody2D.sharedMaterial = maxFriction;
         }
         else
