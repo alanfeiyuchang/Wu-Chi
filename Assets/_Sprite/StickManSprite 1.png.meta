@@ -1,0 +1,951 @@
+fileFormatVersion: 2
+guid: ac8324c35c8b7d84db10e4330c80b2e0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5098077635617474085
+    second: StickManSprite 1_0
+  - first:
+      213: -3428811106859533805
+    second: StickManSprite 1_1
+  - first:
+      213: 3760437567499789225
+    second: StickManSprite 1_2
+  - first:
+      213: 3270557253175307668
+    second: StickManSprite 1_3
+  - first:
+      213: 1160820146498856249
+    second: StickManSprite 1_4
+  - first:
+      213: -9164569040313699202
+    second: StickManSprite 1_5
+  - first:
+      213: -2395452210744317936
+    second: StickManSprite 1_6
+  - first:
+      213: -7914169456203970895
+    second: StickManSprite 1_7
+  - first:
+      213: 3215739101697894902
+    second: StickManSprite 1_8
+  - first:
+      213: -8232448094033917864
+    second: StickManSprite 1_9
+  - first:
+      213: -5014686144363277591
+    second: StickManSprite 1_10
+  - first:
+      213: 6550555666287890969
+    second: StickManSprite 1_11
+  - first:
+      213: 4221839920699617020
+    second: StickManSprite 1_12
+  - first:
+      213: -5955936496912001387
+    second: StickManSprite 1_13
+  - first:
+      213: 2690476235325099603
+    second: StickManSprite 1_14
+  - first:
+      213: 3361829718024051827
+    second: StickManSprite 1_15
+  - first:
+      213: 3437847606644262123
+    second: StickManSprite 1_16
+  - first:
+      213: -8399322243612902103
+    second: StickManSprite 1_17
+  - first:
+      213: -2041153469534358281
+    second: StickManSprite 1_18
+  - first:
+      213: -8883123038679575301
+    second: StickManSprite 1_19
+  - first:
+      213: -1214187074828943696
+    second: StickManSprite 1_20
+  - first:
+      213: 6618406674248077021
+    second: StickManSprite 1_21
+  - first:
+      213: -7339802942022287167
+    second: StickManSprite 1_22
+  - first:
+      213: -530689259703897904
+    second: StickManSprite 1_23
+  - first:
+      213: 6159606667503423967
+    second: StickManSprite 1_24
+  - first:
+      213: -6278762509021648468
+    second: StickManSprite 1_25
+  - first:
+      213: 3442752572629049881
+    second: StickManSprite 1_26
+  - first:
+      213: 5716592167752095719
+    second: StickManSprite 1_27
+  - first:
+      213: -5380844240067445063
+    second: StickManSprite 1_28
+  - first:
+      213: -6989660016856212627
+    second: StickManSprite 1_29
+  - first:
+      213: -6223763665400689540
+    second: StickManSprite 1_30
+  - first:
+      213: -4551250800475721371
+    second: StickManSprite 1_31
+  - first:
+      213: -1745162882721834856
+    second: StickManSprite 1_32
+  - first:
+      213: 8475875925163902195
+    second: StickManSprite 1_33
+  - first:
+      213: -4204799793399628278
+    second: StickManSprite 1_34
+  - first:
+      213: 1483956642966281167
+    second: StickManSprite 1_35
+  - first:
+      213: -6619484044838406010
+    second: StickManSprite 1_36
+  - first:
+      213: -3745144683466447640
+    second: StickManSprite 1_37
+  - first:
+      213: -6547870711283008187
+    second: StickManSprite 1_38
+  - first:
+      213: 5537345132594490332
+    second: StickManSprite 1_39
+  - first:
+      213: -6120648072874516471
+    second: StickManSprite 1_40
+  - first:
+      213: 6713829620531702534
+    second: StickManSprite 1_41
+  - first:
+      213: 4808587469014789635
+    second: StickManSprite 1_42
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StickManSprite 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1156
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd938a3b66dff39b0800000000000000
+      internalID: -5098077635617474085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_1
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1156
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a39b5077a6a60d0800000000000000
+      internalID: -3428811106859533805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_2
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1156
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a3ebd24b02cf2430800000000000000
+      internalID: 3760437567499789225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_3
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 1156
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d671d5e7a536d20800000000000000
+      internalID: 3270557253175307668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_4
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 1156
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9356e20e5cf0c1010800000000000000
+      internalID: 1160820146498856249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_5
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 1156
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e743f888309e0d080800000000000000
+      internalID: -9164569040313699202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 962
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018292ee7e4a1ced0800000000000000
+      internalID: -2395452210744317936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_7
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 962
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b647b68fc83b2290800000000000000
+      internalID: -7914169456203970895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_8
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 962
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f9690fdca990ac20800000000000000
+      internalID: 3215739101697894902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_9
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 962
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 858444b631870cd80800000000000000
+      internalID: -8232448094033917864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_10
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 962
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e257294581486ab0800000000000000
+      internalID: -5014686144363277591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_11
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 962
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91213821caf38ea50800000000000000
+      internalID: 6550555666287890969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfe2dd32a0df69a30800000000000000
+      internalID: 4221839920699617020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_13
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 768
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59696ccdf43485da0800000000000000
+      internalID: -5955936496912001387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_14
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 768
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ece2b91ed765520800000000000000
+      internalID: 2690476235325099603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_15
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 768
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37cdc2a115e97ae20800000000000000
+      internalID: 3361829718024051827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_16
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 768
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be445f90f20b5bf20800000000000000
+      internalID: 3437847606644262123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_17
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 768
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d7a63cbec9f6b80800000000000000
+      internalID: -8399322243612902103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 574
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f43954ebbd5ca3e0800000000000000
+      internalID: -2041153469534358281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_19
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 574
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf45a6f39aec8b480800000000000000
+      internalID: -8883123038679575301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_20
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 574
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be33f9d947562fe0800000000000000
+      internalID: -1214187074828943696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_21
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 574
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dde81adedcd49db50800000000000000
+      internalID: 6618406674248077021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_22
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 574
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c00567bc18c32a90800000000000000
+      internalID: -7339802942022287167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_23
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 574
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d0fb351eec92a8f0800000000000000
+      internalID: -530689259703897904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 380
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd15bac01a15b7550800000000000000
+      internalID: 6159606667503423967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_25
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 380
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca969bca3ca5dd8a0800000000000000
+      internalID: -6278762509021648468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_26
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 380
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 912ed1d693d17cf20800000000000000
+      internalID: 3442752572629049881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_27
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 380
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e7d4ace94a655f40800000000000000
+      internalID: 5716592167752095719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_28
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 380
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9beb21f2ca66355b0800000000000000
+      internalID: -5380844240067445063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_29
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 380
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6bd88a5f3dbffe90800000000000000
+      internalID: -6989660016856212627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 186
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c0fc5dbefb0a9a0800000000000000
+      internalID: -6223763665400689540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_31
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 186
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561bee1b285b6d0c0800000000000000
+      internalID: -4551250800475721371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_32
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 186
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8981b2cba9fe7c7e0800000000000000
+      internalID: -1745162882721834856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickManSprite 1_33
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 186
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f40eaf2f3c50a570800000000000000
+      internalID: 8475875925163902195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: a91a3593a389d944eab4f39a867c94da
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
