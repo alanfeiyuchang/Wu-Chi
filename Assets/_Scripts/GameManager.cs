@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject TopPlayer;
     [SerializeField] private GameObject BottomPlayer;
     [SerializeField] private UIController UICon;
+    [SerializeField] private GameObject blackBackground;
+    [SerializeField] private GameObject WhiteBackground;
     private CharacterController2d T_CharControl;
     private CharacterController2d B_CharControl;
     private PlayerMovement T_playerMove;
@@ -138,6 +140,17 @@ public class GameManager : MonoBehaviour
         TopPlayer.GetComponent<CapsuleCollider2D>().enabled = !TopPlayer.GetComponent<CapsuleCollider2D>().enabled;
         BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = !BottomPlayer.GetComponent<CapsuleCollider2D>().enabled;
         
+    }
+
+    void SwitchBackground()
+    {
+        float blackY = blackBackground.transform.position.y;
+        float whiteY = WhiteBackground.transform.position.y;
+
+        blackBackground.transform.position = new Vector3(blackBackground.transform.position.x,
+            whiteY, blackBackground.transform.position.z);
+        WhiteBackground.transform.position = new Vector3(WhiteBackground.transform.position.x,
+            blackY, WhiteBackground.transform.position.z);
     }
 
     public void Die()
