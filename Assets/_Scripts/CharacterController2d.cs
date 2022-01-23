@@ -93,9 +93,9 @@ public class CharacterController2d : MonoBehaviour
 
 	private void CheckSlope()
     {
-		Vector2 checkPos = transform.position - new Vector3(0f, colliderSize.y/2);
+		Vector2 checkPos = transform.position - new Vector3(0f, colliderSize.y);
 		CheckSlopeOnVertical(checkPos);
-		CheckSlopeOnHorizontal(checkPos);
+		//CheckSlopeOnHorizontal(checkPos);
 	}
 
 	private void CheckSlopeOnHorizontal(Vector2 checkPos)
@@ -104,18 +104,16 @@ public class CharacterController2d : MonoBehaviour
 		RaycastHit2D slopeHitBack = Physics2D.Raycast(checkPos, Vector3.left, slopeCheckDistance, m_WhatIsGround);
        
 		if (slopeHitFront)
-        {
-			Debug.Log("Front");
+		{
 			m_isOnSlope = true;
 			slopeSideAngle = Vector2.Angle(slopeHitFront.normal, Vector2.up);
-			Debug.DrawRay(slopeHitFront.point, Vector3.right, Color.yellow);
+			Debug.DrawLine(checkPos, slopeHitFront.point, Color.yellow);
 		}
 		else if (slopeHitBack)
 		{
-			Debug.Log("Back");
 			m_isOnSlope = true;
 			slopeSideAngle = Vector2.Angle(slopeHitBack.normal, Vector2.up);
-			Debug.DrawRay(slopeHitBack.point, Vector3.left, Color.yellow);
+			Debug.DrawRay(checkPos, slopeHitBack.point, Color.white);
 		}
         else
         {
@@ -206,18 +204,21 @@ public class CharacterController2d : MonoBehaviour
 
 			if (m_Grounded && !m_isOnSlope)
             {
+				Debug.Log("grounded");
 				if(firstLanding)
 					newVelocity.Set(move * movementSpeed, -20.0f);
 				else
 					newVelocity.Set(move * movementSpeed, 0.0f);
 			}
             else if (m_Grounded && m_isOnSlope)
-            {
-                newVelocity.Set(-move * movementSpeed * slopeNormalPerp.x, -move * movementSpeed * slopeNormalPerp.y);
+			{
+				Debug.Log("onslope");
+				newVelocity.Set(-move * movementSpeed * slopeNormalPerp.x, -move * movementSpeed * slopeNormalPerp.y);
 			}
             else if (!m_Grounded)
-            {
-                newVelocity.Set(move * movementSpeed, m_Rigidbody2D.velocity.y);
+			{
+				Debug.Log("in air");
+				newVelocity.Set(move * movementSpeed, m_Rigidbody2D.velocity.y);
             }
 
             m_Rigidbody2D.velocity = newVelocity;
