@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIController UICon;
     [SerializeField] private GameObject blackBackground;
     [SerializeField] private GameObject WhiteBackground;
+    [SerializeField] private Material whiteMaterial;
+    [SerializeField] private Material blackMaterial;
     private CharacterController2d T_CharControl;
     private CharacterController2d B_CharControl;
     private PlayerMovement T_playerMove;
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
     private CharacterFollow T_characterFollow;
     private CharacterFollow B_characterFollow;
     private int CharacterInControl;
+    private float timeElapesd;
     public static GameManager instance;
     private void Awake()
     {
@@ -155,13 +158,21 @@ public class GameManager : MonoBehaviour
             //TopPlayer.GetComponent<CapsuleCollider2D>().enabled = !TopPlayer.GetComponent<CapsuleCollider2D>().enabled;
             //BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = !BottomPlayer.GetComponent<CapsuleCollider2D>().enabled;
             if (CharacterInControl == 0)
+            {
                 TopPlayer.GetComponent<Rigidbody2D>().velocity = BottomPlayer.GetComponent<Rigidbody2D>().velocity;
+                StartCoroutine(SwitchColor(0.5f, false));
+            }
+                
             else
+            {
+                StartCoroutine(SwitchColor(0.5f, true));
                 BottomPlayer.GetComponent<Rigidbody2D>().velocity = TopPlayer.GetComponent<Rigidbody2D>().velocity;
+            }
+                
         }
     }
 
-    void SwitchBackground()
+    /*void SwitchBackground()
     {
         float blackY = blackBackground.transform.position.y;
         float whiteY = WhiteBackground.transform.position.y;
@@ -170,6 +181,29 @@ public class GameManager : MonoBehaviour
             whiteY, blackBackground.transform.position.z);
         WhiteBackground.transform.position = new Vector3(WhiteBackground.transform.position.x,
             blackY, WhiteBackground.transform.position.z);
+    }*/
+
+
+    IEnumerator SwitchColor(float duraction, bool inverse)
+    {
+        
+        while (timeElapesd <= duraction)
+        {
+            if (inverse)
+            {
+                whiteMaterial.color = Color.Lerp(Color.white, Color.black, timeElapesd / duraction);
+                blackMaterial.color = Color.Lerp(Color.black, Color.white, timeElapesd / duraction);
+            }
+            else
+            {
+                blackMaterial.color = Color.Lerp(Color.white, Color.black, timeElapesd / duraction);
+                whiteMaterial.color = Color.Lerp(Color.black, Color.white, timeElapesd / duraction);
+            }
+            timeElapesd += Time.deltaTime;
+            yield return null;
+        }
+
+        timeElapesd = 0f;
     }
 
     public void Die()
