@@ -78,7 +78,6 @@ public class GameManager : MonoBehaviour
             else if (currentState == GameState.Pausing)
                 SwitchGameState(GameState.Playing);
         }
-
     }
 
     public void SwitchGameState(GameState state)
