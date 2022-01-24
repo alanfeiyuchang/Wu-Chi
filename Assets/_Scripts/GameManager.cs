@@ -50,9 +50,11 @@ public class GameManager : MonoBehaviour
         B_playerMove = BottomPlayer.GetComponent<PlayerMovement>();
         T_characterFollow = TopPlayer.GetComponent<CharacterFollow>();
         B_characterFollow = BottomPlayer.GetComponent<CharacterFollow>();
+        
         //CharacterInControl = 0;
         //SwitchControl();
         InitialControl();
+        BottomPlayer.GetComponent<SpriteRenderer>().color = alittleGray;
         whiteMaterial.SetFloat("_Fade", 1);
         blackMaterial.SetFloat("_Fade", 1);
     }
@@ -127,7 +129,8 @@ public class GameManager : MonoBehaviour
             B_CharControl.enabled = false;
             B_playerMove.enabled = false;
             B_characterFollow.enabled = true;
-            
+            TopPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            BottomPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         }
         else
         {
@@ -137,8 +140,8 @@ public class GameManager : MonoBehaviour
             B_CharControl.enabled = true;
             B_playerMove.enabled = true;
             B_characterFollow.enabled = false;
-            //TopPlayer.GetComponent<CapsuleCollider2D>().enabled = false;
-            //BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = true;
+            TopPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            BottomPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
     }
 
@@ -168,12 +171,16 @@ public class GameManager : MonoBehaviour
             //BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = !BottomPlayer.GetComponent<CapsuleCollider2D>().enabled;
             if (CharacterInControl == 0)
             {
+                TopPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                BottomPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                 TopPlayer.GetComponent<Rigidbody2D>().velocity = BottomPlayer.GetComponent<Rigidbody2D>().velocity;
                 StartCoroutine(SwitchColor(0.5f, false));
             }
                 
             else
             {
+                TopPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                BottomPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 StartCoroutine(SwitchColor(0.5f, true));
                 BottomPlayer.GetComponent<Rigidbody2D>().velocity = TopPlayer.GetComponent<Rigidbody2D>().velocity;
             }
