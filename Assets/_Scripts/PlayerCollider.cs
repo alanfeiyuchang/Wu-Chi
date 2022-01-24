@@ -42,11 +42,15 @@ public class PlayerCollider : MonoBehaviour
         {
             GameManager.instance.UpdateCheckPoint(collision.transform.parent.position);
         }
+        
+    }
 
-        if (collision.CompareTag("BombButton"))
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("BombButton"))
         {
-            Debug.Log("trigger buttton");
-            collision.GetComponent<Button>().TriggerButton();
+            Debug.Log("I triggered buttton");
+            collision.gameObject.GetComponent<Button>().TriggerButton();
         }
     }
 
