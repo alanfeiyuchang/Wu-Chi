@@ -16,20 +16,26 @@ public class OpenBox : MonoBehaviour
     private float rightStartingAngle;
     private Vector3 leftStartingPos;
     private Vector3 rightStartingPos;
-    private float finishedFrame = 0.5f;
+    public float finishedFrame = 0.5f;
     private float translateProcess;
+    private float currentPorcess;
     private Vector3 leftTranslateVector;
     private Vector3 rightTranslateVector;
     // Start is called before the first frame update
 
 
-    public void OpeningGateWithTranslate(float openpercent)
+    private void Start()
     {
         leftTranslateVector = leftDoorDest.position - leftDoor.position;
         rightTranslateVector = rightDoorDest.position - rightDoor.position;
         leftStartingPos = leftDoor.position;
         rightStartingPos = rightDoor.position;
+    }
+    public void OpeningGateWithTranslate(float openpercent)
+    {
         openWithTranslate = true;
+        translateProcess += openpercent;
+        currentPorcess = 0f;
     }
     public void OpeningBox(float degree)
     {
@@ -55,10 +61,11 @@ public class OpenBox : MonoBehaviour
 
         if (openWithTranslate)
         {
-            translateProcess += Time.deltaTime;
-            Vector3 newPos = Vector3.Lerp(leftStartingPos, leftTranslateVector/2 + leftStartingPos, translateProcess / finishedFrame);
-            leftDoor.position = newPos;
-            if (translateProcess / finishedFrame >= 0.999f)
+            currentPorcess += Time.deltaTime;
+            leftDoor.position = Vector3.Lerp(leftStartingPos, leftTranslateVector/translateProcess + leftStartingPos, currentPorcess / finishedFrame);
+            Debug.Log(leftTranslateVector / translateProcess + leftStartingPos);
+            rightDoor.position = Vector3.Lerp(rightStartingPos, rightTranslateVector/ translateProcess + rightStartingPos, currentPorcess / finishedFrame);
+            if (currentPorcess / finishedFrame >= 0.999f)
                 openWithTranslate = false;
         }
     }
