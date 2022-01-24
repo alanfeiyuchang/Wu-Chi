@@ -37,6 +37,11 @@ public class PlayerCollider : MonoBehaviour
             if (!colList.Contains(collision))
                 colList.Add(collision);
         }
+
+        if (collision.CompareTag("checkPoint"))
+        {
+            GameManager.instance.UpdateCheckPoint(collision.transform.parent.position);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

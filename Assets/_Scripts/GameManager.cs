@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIController UICon;
     [SerializeField] private Material whiteMaterial;
     [SerializeField] private Material blackMaterial;
-    [SerializeField] private List<Transform> checkPoints;
     private CharacterController2d T_CharControl;
     private CharacterController2d B_CharControl;
     private PlayerMovement T_playerMove;
@@ -20,6 +19,8 @@ public class GameManager : MonoBehaviour
     public int CharacterInControl;
     private float timeElapesd;
     public static GameManager instance;
+
+    Vector3 checkPointPos;
 
     [SerializeField] Color alittleGray;
     private void Awake()
@@ -221,14 +222,19 @@ public class GameManager : MonoBehaviour
     {
         if (CharacterInControl == 0)
         {
-            TopPlayer.transform.position = checkPoints[0].position;
+            TopPlayer.transform.position = checkPointPos;
         }
         else
         {
-            BottomPlayer.transform.position = new Vector3(checkPoints[0].position.x,
-                checkPoints[0].position.y - 5, checkPoints[0].position.z);
+            BottomPlayer.transform.position = new Vector3(checkPointPos.x,
+                checkPointPos.y - 5, checkPointPos.z);
         }
-        //SwitchGameState(GameState.Playing);
+        currentState = GameState.Playing;
+    }
+
+    public void UpdateCheckPoint(Vector3 pos)
+    {
+        checkPointPos = pos;
     }
 
     private void OnApplicationQuit()
