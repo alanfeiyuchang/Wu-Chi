@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject TopPlayer;
     [SerializeField] private GameObject BottomPlayer;
     [SerializeField] private UIController UICon;
-    [SerializeField] private GameObject blackBackground;
-    [SerializeField] private GameObject WhiteBackground;
     [SerializeField] private Material whiteMaterial;
     [SerializeField] private Material blackMaterial;
     private CharacterController2d T_CharControl;
@@ -18,9 +16,11 @@ public class GameManager : MonoBehaviour
     private PlayerMovement B_playerMove;
     private CharacterFollow T_characterFollow;
     private CharacterFollow B_characterFollow;
-    private int CharacterInControl;
+    public int CharacterInControl;
     private float timeElapesd;
     public static GameManager instance;
+
+    [SerializeField] Color alittleGray;
     private void Awake()
     {
         instance = this;
@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
         //CharacterInControl = 0;
         //SwitchControl();
         InitialControl();
+        whiteMaterial.SetFloat("_Fade", 1);
+        blackMaterial.SetFloat("_Fade", 1);
     }
 
     // Update is called once per frame
@@ -186,19 +188,26 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SwitchColor(float duraction, bool inverse)
     {
-        
+        SpriteRenderer TopRenderer = TopPlayer.GetComponent<SpriteRenderer>();
+        SpriteRenderer BottomRenderer = BottomPlayer.GetComponent<SpriteRenderer>();
+        float value;
         while (timeElapesd <= duraction)
         {
             if (inverse)
             {
-                whiteMaterial.color = Color.Lerp(Color.white, Color.black, timeElapesd / duraction);
-                blackMaterial.color = Color.Lerp(Color.black, Color.white, timeElapesd / duraction);
+                value = Mathf.Lerp(1f, 0f, timeElapesd / duraction);
+                BottomRenderer.color = Color.Lerp(alittleGray, Color.black, timeElapesd / duraction);
+                TopRenderer.color = Color.Lerp(Color.black, alittleGray, timeElapesd / duraction);
             }
             else
             {
-                blackMaterial.color = Color.Lerp(Color.white, Color.black, timeElapesd / duraction);
-                whiteMaterial.color = Color.Lerp(Color.black, Color.white, timeElapesd / duraction);
+                value = Mathf.Lerp(0f, 1f, timeElapesd / duraction);
+                TopRenderer.color = Color.Lerp(alittleGray, Color.black, timeElapesd / duraction);
+                BottomRenderer.color = Color.Lerp(Color.black, alittleGray, timeElapesd / duraction);
             }
+                
+            whiteMaterial.SetFloat("_Fade", value);
+            blackMaterial.SetFloat("_Fade", value);
             timeElapesd += Time.deltaTime;
             yield return null;
         }
@@ -210,5 +219,10 @@ public class GameManager : MonoBehaviour
     {
         SwitchGameState(GameState.Dead);
     }
-    
+
+    private void OnApplicationQuit()
+    {
+        whiteMaterial.SetFloat("_Fade", 1);
+        blackMaterial.SetFloat("_Fade", 1);
+    }
 }

@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject deathMenu;
     [SerializeField] AnimationClip pauseClip;
     [SerializeField] AnimationClip resumeClip;
-    [SerializeField] AnimationClip puaseClip2;
+    [SerializeField] AnimationClip pauseClip2;
     [SerializeField] AnimationClip resumeClip2;
     [SerializeField] AnimationClip startClip;
     [SerializeField] GameObject canvasBackground;
@@ -42,8 +42,10 @@ public class UIController : MonoBehaviour
         /*closeMenu();
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;*/
-
-        anim.clip = pauseClip;
+        if (GameManager.instance.CharacterInControl == 0)
+            anim.clip = pauseClip;
+        else
+            anim.clip = pauseClip2;
         anim.Play();
     }
 
@@ -51,7 +53,10 @@ public class UIController : MonoBehaviour
     {
         /*closeMenu();
         Time.timeScale = 1f;*/
-        anim.clip = resumeClip;
+        if (GameManager.instance.CharacterInControl == 0)
+            anim.clip = resumeClip;
+        else
+            anim.clip = resumeClip2;
         anim.Play();
     }
 

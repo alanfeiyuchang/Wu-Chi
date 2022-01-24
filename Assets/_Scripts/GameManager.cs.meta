@@ -3,7 +3,12 @@ guid: 432994e2a9cc90b408c87a1b00c577b6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - TopPlayer: {instanceID: 0}
+  - BottomPlayer: {instanceID: 0}
+  - UICon: {instanceID: 0}
+  - whiteMaterial: {fileID: 2100000, guid: 1934dfb5275c95a48a6403439e0c124e, type: 2}
+  - blackMaterial: {fileID: 2100000, guid: 47eb6b22a78e6c741843ba66a4cccecc, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
