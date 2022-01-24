@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIController UICon;
     [SerializeField] private Material whiteMaterial;
     [SerializeField] private Material blackMaterial;
+    [SerializeField] private Transform backgroundTrans;
     private CharacterController2d T_CharControl;
     private CharacterController2d B_CharControl;
     private PlayerMovement T_playerMove;
@@ -78,6 +79,8 @@ public class GameManager : MonoBehaviour
             else if (currentState == GameState.Pausing)
                 SwitchGameState(GameState.Playing);
         }
+
+        backgroundTrans.position = new Vector3(TopPlayer.transform.position.x, 0f, 10f);
     }
 
     public void SwitchGameState(GameState state)
