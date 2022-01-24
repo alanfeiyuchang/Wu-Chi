@@ -9,13 +9,20 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject deathMenu;
     [SerializeField] AnimationClip pauseClip;
     [SerializeField] AnimationClip resumeClip;
-    [SerializeField] GameManager gameManager;
+    [SerializeField] AnimationClip puaseClip2;
+    [SerializeField] AnimationClip resumeClip2;
+    [SerializeField] AnimationClip startClip;
+    [SerializeField] GameObject canvasBackground;
     private Animation anim;
 
     private void Start()
     {
+        canvasBackground.SetActive(true);
+        canvasBackground.GetComponent<CanvasGroup>().alpha = 1f;
         closeMenu();
         anim = GetComponent<Animation>();
+        anim.clip = startClip;
+        anim.Play();
     }
     private void closeMenu()
     {
@@ -28,7 +35,7 @@ public class UIController : MonoBehaviour
 
     public void HomeButtonClicked() => SceneManager.LoadScene("Home");
 
-    public void ResumeButtonClicked() => gameManager.SwitchGameState(GameManager.GameState.Playing);
+    public void ResumeButtonClicked() => GameManager.instance.SwitchGameState(GameManager.GameState.Playing);
 
     public void Pause()
     {
