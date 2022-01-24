@@ -13,9 +13,9 @@ public class Button : MonoBehaviour
     public void TriggerButton()
     {
         Debug.Log("trigger buttton");
-        ButtonEvent.Invoke();
         if (!beingPushed)
         {
+            ButtonEvent.Invoke();
             beingPushed = true;
             StartCoroutine(HelperFunction.TranslateAnim(this.gameObject, PushDistance, pushTime));
         }

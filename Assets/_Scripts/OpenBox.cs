@@ -48,8 +48,8 @@ public class OpenBox : MonoBehaviour
 
     public void OpenHalf()
     {
-        Vector3 disUp = new Vector3(0f, 1.6f, 0f);
-        Vector3 disDown = new Vector3(0f, -1.6f, 0f);
+        Vector3 disUp = new Vector3(0f, 1f, 0f);
+        Vector3 disDown = new Vector3(0f, -1f, 0f);
         StartCoroutine(HelperFunction.TranslateAnim(leftDoor.gameObject, disUp, 1f));
         StartCoroutine(HelperFunction.TranslateAnim(rightDoor.gameObject, disDown, 1f));
     }
