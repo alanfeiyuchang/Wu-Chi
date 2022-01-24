@@ -21,14 +21,14 @@ public class PlayerCollider : MonoBehaviour
         //Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "spike")
         {
-            //GameManager.instance.Die();
+            GameManager.instance.SwitchGameState(GameManager.GameState.Dead);
             Debug.Log("spike!!" + collision.gameObject.name+ "hit "+this.gameObject.name+"at " + gameObject.transform.position);
             
         }
 
         if (collision.CompareTag("bomb"))
         {
-            //GameManager.instance.Die();
+            GameManager.instance.SwitchGameState(GameManager.GameState.Dead);
             Debug.Log("bomb");
         }
 

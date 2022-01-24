@@ -60,9 +60,9 @@ public class UIController : MonoBehaviour
         anim.Play();
     }
 
-    public void Death()
+    /*public void Death()
     {
         closeMenu();
         deathMenu.SetActive(true);
-    }
+    }*/
 }

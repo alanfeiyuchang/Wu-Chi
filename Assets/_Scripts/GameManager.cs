@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIController UICon;
     [SerializeField] private Material whiteMaterial;
     [SerializeField] private Material blackMaterial;
+    [SerializeField] private List<Transform> checkPoints;
     private CharacterController2d T_CharControl;
     private CharacterController2d B_CharControl;
     private PlayerMovement T_playerMove;
@@ -90,8 +91,8 @@ public class GameManager : MonoBehaviour
                 UICon.Resume();
                 break;
             case GameState.Dead:
-                UICon.Death();
-                DisableCharacterController();
+                //UICon.Death();
+                Die();
                 break;
             case GameState.Pausing:
                 UICon.Pause();
@@ -218,7 +219,16 @@ public class GameManager : MonoBehaviour
 
     public void Die()
     {
-        SwitchGameState(GameState.Dead);
+        if (CharacterInControl == 0)
+        {
+            TopPlayer.transform.position = checkPoints[0].position;
+        }
+        else
+        {
+            BottomPlayer.transform.position = new Vector3(checkPoints[0].position.x,
+                checkPoints[0].position.y - 5, checkPoints[0].position.z);
+        }
+        //SwitchGameState(GameState.Playing);
     }
 
     private void OnApplicationQuit()
