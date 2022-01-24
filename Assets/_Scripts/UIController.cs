@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     [SerializeField] AnimationClip startClip;
     [SerializeField] GameObject canvasBackground;
     private Animation anim;
+    public bool canInput = true;
 
     private void Start()
     {
@@ -60,9 +61,6 @@ public class UIController : MonoBehaviour
         anim.Play();
     }
 
-    /*public void Death()
-    {
-        closeMenu();
-        deathMenu.SetActive(true);
-    }*/
+    public void CanInput() => canInput = true;
+    public void CannotInput() => canInput = false;
 }

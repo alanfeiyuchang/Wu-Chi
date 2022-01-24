@@ -18,7 +18,7 @@ public class PlayerCollider : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log(collision.gameObject.tag);
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "spike")
         {
             GameManager.instance.SwitchGameState(GameManager.GameState.Dead);
@@ -41,6 +41,12 @@ public class PlayerCollider : MonoBehaviour
         if (collision.CompareTag("checkPoint"))
         {
             GameManager.instance.UpdateCheckPoint(collision.transform.parent.position);
+        }
+
+        if (collision.CompareTag("BombButton"))
+        {
+            Debug.Log("trigger buttton");
+            collision.GetComponent<Button>().TriggerButton();
         }
     }
 

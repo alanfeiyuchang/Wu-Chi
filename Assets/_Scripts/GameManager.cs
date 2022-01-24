@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIController UICon;
     [SerializeField] private Material whiteMaterial;
     [SerializeField] private Material blackMaterial;
+    [SerializeField] private Transform backgroundTrans;
     private CharacterController2d T_CharControl;
     private CharacterController2d B_CharControl;
     private PlayerMovement T_playerMove;
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
     public int CharacterInControl;
     private float timeElapesd;
     public static GameManager instance;
+
+    private bool canInput = true;
 
     Vector3 checkPointPos;
 
@@ -47,9 +50,11 @@ public class GameManager : MonoBehaviour
         B_playerMove = BottomPlayer.GetComponent<PlayerMovement>();
         T_characterFollow = TopPlayer.GetComponent<CharacterFollow>();
         B_characterFollow = BottomPlayer.GetComponent<CharacterFollow>();
+        
         //CharacterInControl = 0;
         //SwitchControl();
         InitialControl();
+        BottomPlayer.GetComponent<SpriteRenderer>().color = alittleGray;
         whiteMaterial.SetFloat("_Fade", 1);
         blackMaterial.SetFloat("_Fade", 1);
     }
@@ -57,7 +62,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (UICon.canInput && Input.GetKeyDown(KeyCode.Space))
         {
             /*if (CharacterInControl == 0)
             {
@@ -71,7 +76,7 @@ public class GameManager : MonoBehaviour
         }
 
         //control the ui menu
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (UICon.canInput && Input.GetKeyDown(KeyCode.Escape))
         {
             if (currentState == GameState.Playing)
                 SwitchGameState(GameState.Pausing);
@@ -79,6 +84,7 @@ public class GameManager : MonoBehaviour
                 SwitchGameState(GameState.Playing);
         }
 
+        backgroundTrans.position = new Vector3(TopPlayer.transform.position.x, 0f, 10f);
     }
 
     public void SwitchGameState(GameState state)
@@ -123,7 +129,8 @@ public class GameManager : MonoBehaviour
             B_CharControl.enabled = false;
             B_playerMove.enabled = false;
             B_characterFollow.enabled = true;
-            
+            TopPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            BottomPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         }
         else
         {
@@ -133,8 +140,8 @@ public class GameManager : MonoBehaviour
             B_CharControl.enabled = true;
             B_playerMove.enabled = true;
             B_characterFollow.enabled = false;
-            //TopPlayer.GetComponent<CapsuleCollider2D>().enabled = false;
-            //BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = true;
+            TopPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            BottomPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
     }
 
@@ -164,12 +171,16 @@ public class GameManager : MonoBehaviour
             //BottomPlayer.GetComponent<CapsuleCollider2D>().enabled = !BottomPlayer.GetComponent<CapsuleCollider2D>().enabled;
             if (CharacterInControl == 0)
             {
+                TopPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                BottomPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                 TopPlayer.GetComponent<Rigidbody2D>().velocity = BottomPlayer.GetComponent<Rigidbody2D>().velocity;
                 StartCoroutine(SwitchColor(0.5f, false));
             }
                 
             else
             {
+                TopPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                BottomPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 StartCoroutine(SwitchColor(0.5f, true));
                 BottomPlayer.GetComponent<Rigidbody2D>().velocity = TopPlayer.GetComponent<Rigidbody2D>().velocity;
             }
@@ -191,6 +202,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SwitchColor(float duraction, bool inverse)
     {
+        UICon.CannotInput();
         SpriteRenderer TopRenderer = TopPlayer.GetComponent<SpriteRenderer>();
         SpriteRenderer BottomRenderer = BottomPlayer.GetComponent<SpriteRenderer>();
         float value;
@@ -214,7 +226,7 @@ public class GameManager : MonoBehaviour
             timeElapesd += Time.deltaTime;
             yield return null;
         }
-
+        UICon.CanInput();
         timeElapesd = 0f;
     }
 
