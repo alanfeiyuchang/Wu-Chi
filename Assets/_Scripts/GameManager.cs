@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     private float timeElapesd;
     public static GameManager instance;
 
+    private bool canInput = true;
+
     Vector3 checkPointPos;
 
     [SerializeField] Color alittleGray;
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (UICon.canInput && Input.GetKeyDown(KeyCode.Space))
         {
             /*if (CharacterInControl == 0)
             {
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
         }
 
         //control the ui menu
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (UICon.canInput && Input.GetKeyDown(KeyCode.Escape))
         {
             if (currentState == GameState.Playing)
                 SwitchGameState(GameState.Pausing);
@@ -193,6 +195,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SwitchColor(float duraction, bool inverse)
     {
+        UICon.CannotInput();
         SpriteRenderer TopRenderer = TopPlayer.GetComponent<SpriteRenderer>();
         SpriteRenderer BottomRenderer = BottomPlayer.GetComponent<SpriteRenderer>();
         float value;
@@ -216,7 +219,7 @@ public class GameManager : MonoBehaviour
             timeElapesd += Time.deltaTime;
             yield return null;
         }
-
+        UICon.CanInput();
         timeElapesd = 0f;
     }
 
