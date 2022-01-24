@@ -45,10 +45,18 @@ public class OpenBox : MonoBehaviour
         rightStartingAngle = rightDoor.transform.localEulerAngles.z;
         anglePerSecond = 0;
     }
+
+    public void OpenHalf()
+    {
+        Vector3 disUp = new Vector3(0f, 1.6f, 0f);
+        Vector3 disDown = new Vector3(0f, -1.6f, 0f);
+        StartCoroutine(HelperFunction.TranslateAnim(leftDoor.gameObject, disUp, 1f));
+        StartCoroutine(HelperFunction.TranslateAnim(rightDoor.gameObject, disDown, 1f));
+    }
     // Update is called once per frame
     void Update()
     {
-        if (isOpening)
+        /*if (isOpening)
         {
             anglePerSecond += Time.deltaTime;
             float z_angle = Mathf.Lerp(leftStartingAngle, leftStartingAngle + targetDegrees, anglePerSecond / finishedFrame);
@@ -67,6 +75,6 @@ public class OpenBox : MonoBehaviour
             rightDoor.position = Vector3.Lerp(rightStartingPos, rightTranslateVector/ translateProcess + rightStartingPos, currentPorcess / finishedFrame);
             if (currentPorcess / finishedFrame >= 0.999f)
                 openWithTranslate = false;
-        }
+        }*/
     }
 }
