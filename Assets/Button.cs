@@ -5,10 +5,22 @@ using UnityEngine.Events;
 
 public class Button : MonoBehaviour
 {
-   public UnityEvent ButtonEvent;
-   public void TriggerButton()
+    public UnityEvent ButtonEvent;
+    [SerializeField] Vector3 PushDistance;
+    [SerializeField] float pushTime = 0;
+    private bool beingPushed = false;
+
+    public void TriggerButton()
     {
         Debug.Log("trigger buttton");
         ButtonEvent.Invoke();
+        if (!beingPushed)
+        {
+            beingPushed = true;
+            StartCoroutine(HelperFunction.TranslateAnim(this.gameObject, PushDistance, pushTime));
+        }
+        
     }
+
+    
 }
