@@ -70,9 +70,9 @@ public class OpenBox : MonoBehaviour
         if (openWithTranslate)
         {
             currentPorcess += Time.deltaTime;
-            leftDoor.position = Vector3.Lerp(leftStartingPos, leftTranslateVector/translateProcess + leftStartingPos, currentPorcess / finishedFrame);
-            Debug.Log(leftTranslateVector / translateProcess + leftStartingPos);
-            rightDoor.position = Vector3.Lerp(rightStartingPos, rightTranslateVector/ translateProcess + rightStartingPos, currentPorcess / finishedFrame);
+            leftDoor.position = Vector3.Lerp(leftStartingPos, leftTranslateVector * translateProcess + leftStartingPos, currentPorcess / finishedFrame);
+            Debug.Log(leftTranslateVector * translateProcess + leftStartingPos);
+            rightDoor.position = Vector3.Lerp(rightStartingPos, rightTranslateVector * translateProcess + rightStartingPos, currentPorcess / finishedFrame);
             if (currentPorcess / finishedFrame >= 0.999f)
                 openWithTranslate = false;
         }*/

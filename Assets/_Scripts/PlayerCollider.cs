@@ -42,7 +42,11 @@ public class PlayerCollider : MonoBehaviour
         {
             GameManager.instance.UpdateCheckPoint(collision.transform.parent.position);
         }
-        
+
+        if (collision.CompareTag("frontMask"))
+        {
+            collision.GetComponent<FrontCover>().Disappear();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -61,6 +65,10 @@ public class PlayerCollider : MonoBehaviour
             Debug.Log("Remove");
             if (colList.Contains(collision))
                 colList.Remove(collision);
+        }
+        if (collision.CompareTag("frontMask"))
+        {
+            collision.GetComponent<FrontCover>().Appear();
         }
     }
 
