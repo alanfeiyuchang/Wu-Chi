@@ -253,7 +253,12 @@ public class GameManager : MonoBehaviour
         BotDeathParticle.transform.position = BottomPlayer.transform.position;
         BotDeathParticle.Play();
         particleDuration = Mathf.Max(particleDuration, BotDeathParticle.duration );
+
         SoundEF.PlayOneShot(deathSFX);
+
+
+        UICon.canInput = false;
+
         TopPlayer.SetActive(false);
         BottomPlayer.SetActive(false);
 
@@ -276,6 +281,7 @@ public class GameManager : MonoBehaviour
                 checkPointPos.y - 5, checkPointPos.z);
         }
 
+        UICon.canInput = true;
         TopPlayer.SetActive(true);
         BottomPlayer.SetActive(true);
         currentState = GameState.Playing;

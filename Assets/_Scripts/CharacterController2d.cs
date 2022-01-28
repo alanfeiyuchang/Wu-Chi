@@ -35,6 +35,7 @@ public class CharacterController2d : MonoBehaviour
 	// new variable
 	private CapsuleCollider2D m_Collider2D;
 	private Animator animator;
+	private AudioSource audioSource;
 
 	private Vector2 newVelocity;
 	private Vector2 colliderSize;
@@ -54,6 +55,9 @@ public class CharacterController2d : MonoBehaviour
 	public float slopeCheckDistance;
 	public float movementSpeed;
 
+	public AudioClip DeathSound;
+	public AudioClip JumpSound;
+
 	//Animation State
 	const string PLAYER_IDLE = "Player_Idle";
 	const string PLAYER_RUN = "Player_Run";
@@ -64,6 +68,7 @@ public class CharacterController2d : MonoBehaviour
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		m_Collider2D = GetComponent<CapsuleCollider2D>();
 		animator = GetComponent<Animator>();
+		audioSource = GetComponent<AudioSource>();
 		colliderSize = m_Collider2D.size;
 
 		if (OnLandEvent == null)
@@ -264,7 +269,9 @@ public class CharacterController2d : MonoBehaviour
 			newVelocity.Set(0.0f, 0.0f);
 			m_Rigidbody2D.velocity = newVelocity;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-			GameManager.instance.TriggerJumpSFX();
+
+			//GameManager.instance.TriggerJumpSFX();
+
 		}
 	}
 
