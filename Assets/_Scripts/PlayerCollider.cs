@@ -41,6 +41,7 @@ public class PlayerCollider : MonoBehaviour
         if (collision.CompareTag("checkPoint"))
         {
             GameManager.instance.UpdateCheckPoint(collision.transform.parent.position);
+            collision.transform.parent.GetChild(1).GetComponent<BoxCollider2D>().enabled = true;
         }
 
         if (collision.CompareTag("frontMask"))

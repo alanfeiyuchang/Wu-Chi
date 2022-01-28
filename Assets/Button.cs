@@ -7,7 +7,7 @@ public class Button : MonoBehaviour
 {
     public UnityEvent ButtonEvent;
     [SerializeField] Vector3 PushDistance;
-    [SerializeField] float pushTime = 0;
+    [SerializeField] float pushTime = 0.2f;
     private bool beingPushed = false;
 
     public void TriggerButton()
