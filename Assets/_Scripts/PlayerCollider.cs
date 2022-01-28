@@ -54,6 +54,11 @@ public class PlayerCollider : MonoBehaviour
             Debug.Log("I triggered buttton");
             collision.gameObject.GetComponent<Button>().TriggerButton();
         }
+
+        if (collision.CompareTag("tutorialBar"))
+        {
+            GameManager.instance.SpaceAppear();
+        }
     }
 
     //private void OnCollisionEnter2D(Collision2D collision)

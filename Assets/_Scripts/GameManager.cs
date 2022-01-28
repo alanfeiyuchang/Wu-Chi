@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip deathSFX;
     [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip switchSFX;
+    [SerializeField] private GameObject spaceTutorial;
     private CharacterController2d T_CharControl;
     private CharacterController2d B_CharControl;
     private PlayerMovement T_playerMove;
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
         BottomPlayer.GetComponent<SpriteRenderer>().color = alittleGray;
         whiteMaterial.SetFloat("_Fade", 1);
         blackMaterial.SetFloat("_Fade", 1);
+        spaceTutorial.SetActive(false);
     }
 
     // Update is called once per frame
@@ -200,16 +202,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*void SwitchBackground()
+    public void SpaceAppear()
     {
-        float blackY = blackBackground.transform.position.y;
-        float whiteY = WhiteBackground.transform.position.y;
-
-        blackBackground.transform.position = new Vector3(blackBackground.transform.position.x,
-            whiteY, blackBackground.transform.position.z);
-        WhiteBackground.transform.position = new Vector3(WhiteBackground.transform.position.x,
-            blackY, WhiteBackground.transform.position.z);
-    }*/
+        spaceTutorial.SetActive(true);
+    }
 
 
     IEnumerator SwitchColor(float duraction, bool inverse)
