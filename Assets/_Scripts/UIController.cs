@@ -61,6 +61,8 @@ public class UIController : MonoBehaviour
         anim.Play();
     }
 
+    public void QuitClicked() => Application.Quit();
+
     public void CanInput() => canInput = true;
     public void CannotInput() => canInput = false;
 }

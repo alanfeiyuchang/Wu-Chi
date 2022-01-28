@@ -14,6 +14,10 @@ public class EndingManager : MonoBehaviour
     [SerializeField] private SpriteRenderer EndingBackground;
     //[SerializeField] private GameObject TopGround;
     [SerializeField] private List<SpriteRenderer> uselessSprites;
+
+    [SerializeField] private List<SpriteRenderer> mushroomSprites;
+
+    [SerializeField] private GameObject EndingPanel;
     private int pressCount = 0;
     float timeElapsed = 0f;
 
@@ -29,6 +33,8 @@ public class EndingManager : MonoBehaviour
 
     IEnumerator EndingAnim()
     {
+        GameManager.instance.canInput = false;
+        EndingBackground.transform.position = new Vector3(Camera.main.transform.position.x, 0f, 0f);
         SpriteRenderer topPlayerSR = TopPlayer.GetComponent<SpriteRenderer>();
         SpriteRenderer bottomPlayerSR = BottomPlayer.GetComponent<SpriteRenderer>();
         Color initTopColor = topPlayerSR.color;
@@ -42,10 +48,20 @@ public class EndingManager : MonoBehaviour
         float duration = 2f;
         while (timeElapsed <= duration)
         {
+            float alpha = Mathf.Lerp(1f, 0f, timeElapsed / duration);
+            foreach (SpriteRenderer sprite in uselessSprites)
+            {
+                sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, alpha);
+            }
             timeElapsed += Time.deltaTime;
             topPlayerSR.color = Color.Lerp(initTopColor, goTopColor, timeElapsed / duration);
             bottomPlayerSR.color = Color.Lerp(initBottomColor, goBottomColor, timeElapsed / duration);
             yield return null;
+        }
+
+        foreach (SpriteRenderer sprite in uselessSprites)
+        {
+            sprite.enabled = false;
         }
 
         timeElapsed = 0f;
@@ -67,23 +83,17 @@ public class EndingManager : MonoBehaviour
         virtualCam.SetActive(false);
         GameManager.instance.DisableCharacterController();
 
-        duration = 5f;
+        duration = 3.5f;
         while (timeElapsed <= duration)
         {
             timeElapsed += Time.deltaTime;
-            TopPlayer.transform.position = Vector3.Lerp(initPos, toPos, timeElapsed / duration);
             backgroundTrans.position = Vector3.Lerp(initBackPos, toBackPos, timeElapsed / duration);
             UpPart.transform.position = Vector3.Lerp(initUpPos, toUpPos, timeElapsed / duration);
             yield return null;
         }
         timeElapsed = 0f;
 
-        foreach (SpriteRenderer sprite in uselessSprites)
-        {
-            sprite.enabled = false;
-        }
-
-        duration = 1f;
+        duration = 0.5f;
         float mushroomGrowHeight = 0.2f;
         Vector3 initMushPos = mushroom.position;
         Vector3 toMushPos = new Vector3(mushroom.position.x, 
@@ -97,18 +107,45 @@ public class EndingManager : MonoBehaviour
         }
         timeElapsed = 0f;
 
-        Color initBackColor = EndingBackground.color;
-        Color goBackColor = new Color(EndingBackground.color.r, EndingBackground.color.g,
-            EndingBackground.color.b, 1f);
-
-        duration = 2f;
+        duration = 1f;
         while (timeElapsed <= duration)
         {
             timeElapsed += Time.deltaTime;
-            EndingBackground.color = Color.Lerp(initBackColor, goBackColor, timeElapsed / duration);
+            yield return null;
+        }
+        timeElapsed = 0f;
+
+        duration = 1f;
+        while (timeElapsed <= duration)
+        {
+            timeElapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, timeElapsed / duration);
+            foreach (SpriteRenderer sprite in mushroomSprites)
+            {
+                sprite.color = new Color(sprite.color.r, sprite.color.b, sprite.color.g, alpha);
+            }
+            yield return null;
+        }
+        timeElapsed = 0f;
+
+        duration = 0.5f;
+        while (timeElapsed <= duration)
+        {
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        timeElapsed = 0f;
+
+        duration = 2.5f;
+        EndingPanel.SetActive(true);
+        CanvasGroup EndingCan = EndingPanel.GetComponent<CanvasGroup>();
+        EndingCan.alpha = 0f;
+        while (timeElapsed <= duration)
+        {
+            timeElapsed += Time.deltaTime;
+            EndingCan.alpha = Mathf.Lerp(0f, 1f, timeElapsed / duration);
             yield return null;
         }
 
-        //GameManager.instance.InitialControl();
     }
 }
