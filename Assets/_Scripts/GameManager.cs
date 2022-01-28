@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private float timeElapesd;
     public static GameManager instance;
 
-    private bool canInput = true;
+    public bool canInput = true;
 
     Vector3 checkPointPos;
 
