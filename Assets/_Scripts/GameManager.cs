@@ -84,7 +84,8 @@ public class GameManager : MonoBehaviour
                 SwitchGameState(GameState.Playing);
         }
 
-        backgroundTrans.position = new Vector3(TopPlayer.transform.position.x, 0f, 10f);
+        backgroundTrans.position = new Vector3(TopPlayer.transform.position.x, 
+            backgroundTrans.transform.position.y, backgroundTrans.transform.position.z);
     }
 
     public void SwitchGameState(GameState state)
@@ -109,15 +110,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void DisableCharacterController()
+    public void DisableCharacterController()
     {
         T_CharControl.enabled = false;
         T_playerMove.enabled = false;
         B_playerMove.enabled = false;
         B_CharControl.enabled = false;
+        TopPlayer.GetComponent<CharacterFollow>().enabled = false;
+        BottomPlayer.GetComponent<CharacterFollow>().enabled = false;
     }
 
-    void InitialControl()
+    public void InitialControl()
     {
         if (CharacterInControl == 0)
         {
@@ -131,6 +134,7 @@ public class GameManager : MonoBehaviour
             B_characterFollow.enabled = true;
             TopPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             BottomPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            BottomPlayer.GetComponent<CharacterFollow>().enabled = true;
         }
         else
         {
@@ -142,6 +146,7 @@ public class GameManager : MonoBehaviour
             B_characterFollow.enabled = false;
             TopPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             BottomPlayer.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            TopPlayer.GetComponent<CharacterFollow>().enabled = true;
         }
     }
 
@@ -254,4 +259,6 @@ public class GameManager : MonoBehaviour
         whiteMaterial.SetFloat("_Fade", 1);
         blackMaterial.SetFloat("_Fade", 1);
     }
+
+    
 }
