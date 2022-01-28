@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviour
                 CharacterInControl = 0;
             }*/
             SwitchControl();
-            SoundEF.PlayOneShot(switchSFX);
         }
 
         //control the ui menu
@@ -196,7 +195,8 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(SwitchColor(0.5f, true));
                 BottomPlayer.GetComponent<Rigidbody2D>().velocity = TopPlayer.GetComponent<Rigidbody2D>().velocity;
             }
-                
+
+            SoundEF.PlayOneShot(switchSFX);
         }
     }
 
