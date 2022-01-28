@@ -47,7 +47,7 @@ public class CharacterController2d : MonoBehaviour
 
 	private bool m_isOnSlope;
 	private bool firstLanding;
-
+	private float jumpTimeOut = 0f;
 	[HideInInspector]public string currentState;
 
 	[HideInInspector]public bool m_FacingRight = true;
@@ -262,7 +262,7 @@ public class CharacterController2d : MonoBehaviour
 
 		}
 		// If the player should jump...
-		if (m_Grounded && jump)
+		/*if (m_Grounded && jump)
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
@@ -272,10 +272,31 @@ public class CharacterController2d : MonoBehaviour
 
 			//GameManager.instance.TriggerJumpSFX();
 
-		}
+		}*/
 	}
 
-
+	public void jumpOnce(bool jump)
+    {
+		if (m_Grounded)
+		{
+			// Add a vertical force to the player.
+			if(jump && jumpTimeOut <= 0f)
+            {
+				m_Grounded = false;
+				newVelocity.Set(0.0f, 0.0f);
+				m_Rigidbody2D.velocity = newVelocity;
+				m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			}
+            if (jumpTimeOut > 0f)
+            {
+				jumpTimeOut -= Time.deltaTime;
+            }
+		}
+        else
+        {
+			jumpTimeOut = 0.5f;
+        }
+	}
 	private void Flip()
 	{
 		// Switch the way the player is labelled as facing.

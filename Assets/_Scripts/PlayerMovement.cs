@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+		controller.jumpOnce(jump);
 		jump = false;
 	}
 }
