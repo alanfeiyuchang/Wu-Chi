@@ -249,6 +249,7 @@ public class GameManager : MonoBehaviour
         BotDeathParticle.Play();
         particleDuration = Mathf.Max(particleDuration, BotDeathParticle.duration );
 
+        UICon.canInput = false;
         TopPlayer.SetActive(false);
         BottomPlayer.SetActive(false);
 
@@ -271,6 +272,7 @@ public class GameManager : MonoBehaviour
                 checkPointPos.y - 5, checkPointPos.z);
         }
 
+        UICon.canInput = true;
         TopPlayer.SetActive(true);
         BottomPlayer.SetActive(true);
         currentState = GameState.Playing;
