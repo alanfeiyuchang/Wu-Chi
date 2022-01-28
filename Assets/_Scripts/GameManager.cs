@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Material whiteMaterial;
     [SerializeField] private Material blackMaterial;
     [SerializeField] private Transform backgroundTrans;
+    [SerializeField] private ParticleSystem TopDeathParticle;
+    [SerializeField] private ParticleSystem BotDeathParticle;
     private CharacterController2d T_CharControl;
     private CharacterController2d B_CharControl;
     private PlayerMovement T_playerMove;
@@ -232,6 +234,28 @@ public class GameManager : MonoBehaviour
 
     public void Die()
     {
+        float particleDuration = 0f;
+
+        TopDeathParticle.transform.position = TopPlayer.transform.position;
+        TopDeathParticle.Play();
+        particleDuration = Mathf.Max(particleDuration, TopDeathParticle.duration );
+
+        BotDeathParticle.transform.position = BottomPlayer.transform.position;
+        BotDeathParticle.Play();
+        particleDuration = Mathf.Max(particleDuration, BotDeathParticle.duration );
+
+        TopPlayer.SetActive(false);
+        BottomPlayer.SetActive(false);
+
+        StartCoroutine(Respawn(particleDuration));
+
+    }
+
+    IEnumerator Respawn(float waitTime)
+    {
+
+        yield return new WaitForSeconds(waitTime);
+
         if (CharacterInControl == 0)
         {
             TopPlayer.transform.position = checkPointPos;
@@ -241,6 +265,9 @@ public class GameManager : MonoBehaviour
             BottomPlayer.transform.position = new Vector3(checkPointPos.x,
                 checkPointPos.y - 5, checkPointPos.z);
         }
+
+        TopPlayer.SetActive(true);
+        BottomPlayer.SetActive(true);
         currentState = GameState.Playing;
     }
 

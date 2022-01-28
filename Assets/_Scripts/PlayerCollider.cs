@@ -47,16 +47,22 @@ public class PlayerCollider : MonoBehaviour
         {
             collision.GetComponent<FrontCover>().Disappear();
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
         if (collision.gameObject.CompareTag("BombButton"))
         {
             Debug.Log("I triggered buttton");
             collision.gameObject.GetComponent<Button>().TriggerButton();
         }
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("BombButton"))
+    //    {
+    //        Debug.Log("I triggered buttton");
+    //        collision.gameObject.GetComponent<Button>().TriggerButton();
+    //    }
+    //}
 
     private void OnTriggerExit2D(Collider2D collision)
     {
