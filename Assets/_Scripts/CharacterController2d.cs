@@ -239,7 +239,10 @@ public class CharacterController2d : MonoBehaviour
 			}
             else if (m_Grounded && m_isOnSlope)
 			{
-				newVelocity.Set(-move * movementSpeed * slopeNormalPerp.x, -move * movementSpeed * slopeNormalPerp.y);
+				if (firstLanding)
+					newVelocity.Set(-move * movementSpeed * slopeNormalPerp.x, -20f);
+				else
+					newVelocity.Set(-move * movementSpeed * slopeNormalPerp.x, -move * movementSpeed * slopeNormalPerp.y);
 			}
             else if (!m_Grounded)
 			{
@@ -282,7 +285,6 @@ public class CharacterController2d : MonoBehaviour
 			// Add a vertical force to the player.
 			if(jump && jumpTimeOut <= 0f)
 			{
-				Debug.Log("Junp");
 				GameManager.instance.TriggerJumpSFX();
 				m_Grounded = false;
 				newVelocity.Set(0.0f, 0.0f);
