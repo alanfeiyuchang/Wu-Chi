@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private PlayerMovement B_playerMove;
     private CharacterFollow T_characterFollow;
     private CharacterFollow B_characterFollow;
+    private SpriteRenderer T_render;
+    private SpriteRenderer B_render;
     public int CharacterInControl;
     private float timeElapesd;
     public static GameManager instance;
@@ -57,7 +59,9 @@ public class GameManager : MonoBehaviour
         B_playerMove = BottomPlayer.GetComponent<PlayerMovement>();
         T_characterFollow = TopPlayer.GetComponent<CharacterFollow>();
         B_characterFollow = BottomPlayer.GetComponent<CharacterFollow>();
-        
+        T_render = TopPlayer.GetComponent<SpriteRenderer>();
+        B_render = BottomPlayer.GetComponent<SpriteRenderer>();
+
         //CharacterInControl = 0;
         //SwitchControl();
         InitialControl();
@@ -65,6 +69,11 @@ public class GameManager : MonoBehaviour
         whiteMaterial.SetFloat("_Fade", 1);
         blackMaterial.SetFloat("_Fade", 1);
         spaceTutorial.SetActive(false);
+
+        TopPlayer.SetActive(false);
+        BottomPlayer.SetActive(false);
+        TopPlayer.SetActive(true);
+        BottomPlayer.SetActive(true);
     }
 
     // Update is called once per frame
@@ -254,9 +263,9 @@ public class GameManager : MonoBehaviour
 
 
         UICon.canInput = false;
-
         TopPlayer.SetActive(false);
         BottomPlayer.SetActive(false);
+
 
         StartCoroutine(Respawn(particleDuration));
 
@@ -280,6 +289,7 @@ public class GameManager : MonoBehaviour
         UICon.canInput = true;
         TopPlayer.SetActive(true);
         BottomPlayer.SetActive(true);
+
         currentState = GameState.Playing;
     }
 

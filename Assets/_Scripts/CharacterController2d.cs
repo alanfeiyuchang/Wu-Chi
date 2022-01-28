@@ -89,7 +89,7 @@ public class CharacterController2d : MonoBehaviour
 	{
 		if (!m_Grounded && !m_isOnSlope)
 			ChangeAnimationState(PLAYER_JUMP);
-		else if (m_Rigidbody2D.velocity.x != 0)
+		else if (Mathf.Abs(m_Rigidbody2D.velocity.x) >= 0.001f)
 			ChangeAnimationState(PLAYER_RUN);
 		else
 			ChangeAnimationState(PLAYER_IDLE);
@@ -281,7 +281,8 @@ public class CharacterController2d : MonoBehaviour
 		{
 			// Add a vertical force to the player.
 			if(jump && jumpTimeOut <= 0f)
-            {
+			{
+				Debug.Log("Junp");
 				GameManager.instance.TriggerJumpSFX();
 				m_Grounded = false;
 				newVelocity.Set(0.0f, 0.0f);
