@@ -9,11 +9,18 @@ public class Button : MonoBehaviour
     [SerializeField] Vector3 PushDistance;
     [SerializeField] float pushTime = 0.2f;
     private bool beingPushed = false;
+    private bool correctSource;
+    public GameObject triggerSource;
 
-    public void TriggerButton()
+    public void TriggerButton(GameObject source)
     {
-        Debug.Log("trigger buttton");
-        if (!beingPushed)
+        correctSource = true;
+        if (triggerSource != null && source != triggerSource)
+        {
+            correctSource = false;
+        }
+
+        if (!beingPushed && correctSource)
         {
             ButtonEvent.Invoke();
             beingPushed = true;
@@ -22,5 +29,4 @@ public class Button : MonoBehaviour
         
     }
 
-    
 }

@@ -232,15 +232,21 @@ public class CharacterController2d : MonoBehaviour
 
 			if (m_Grounded && !m_isOnSlope)
             {
-				if(firstLanding)
+                if (firstLanding)
+                {
+					firstLanding = false;
 					newVelocity.Set(move * movementSpeed, -20.0f);
+				}
 				else
 					newVelocity.Set(move * movementSpeed, 0.0f);
 			}
             else if (m_Grounded && m_isOnSlope)
 			{
-				if (firstLanding)
+                if (firstLanding)
+                {
+					firstLanding = false;
 					newVelocity.Set(-move * movementSpeed * slopeNormalPerp.x, -20f);
+				}
 				else
 					newVelocity.Set(-move * movementSpeed * slopeNormalPerp.x, -move * movementSpeed * slopeNormalPerp.y);
 			}

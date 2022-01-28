@@ -51,8 +51,7 @@ public class PlayerCollider : MonoBehaviour
 
         if (collision.gameObject.CompareTag("BombButton"))
         {
-            Debug.Log("I triggered buttton");
-            collision.gameObject.GetComponent<Button>().TriggerButton();
+            collision.gameObject.GetComponent<Button>().TriggerButton(this.gameObject);
         }
 
         if (collision.CompareTag("tutorialBar"))
