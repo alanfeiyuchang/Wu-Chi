@@ -264,6 +264,7 @@ public class CharacterController2d : MonoBehaviour
 			newVelocity.Set(0.0f, 0.0f);
 			m_Rigidbody2D.velocity = newVelocity;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			GameManager.instance.TriggerJumpSFX();
 		}
 	}
 

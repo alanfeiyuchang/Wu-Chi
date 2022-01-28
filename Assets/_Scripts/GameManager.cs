@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform backgroundTrans;
     [SerializeField] private ParticleSystem TopDeathParticle;
     [SerializeField] private ParticleSystem BotDeathParticle;
+    [SerializeField] private AudioSource SoundEF;
+    [SerializeField] private AudioClip deathSFX;
+    [SerializeField] private AudioClip jump;
+    [SerializeField] private AudioClip switchSFX;
     private CharacterController2d T_CharControl;
     private CharacterController2d B_CharControl;
     private PlayerMovement T_playerMove;
@@ -75,6 +79,7 @@ public class GameManager : MonoBehaviour
                 CharacterInControl = 0;
             }*/
             SwitchControl();
+            SoundEF.PlayOneShot(switchSFX);
         }
 
         //control the ui menu
@@ -248,7 +253,7 @@ public class GameManager : MonoBehaviour
         BotDeathParticle.transform.position = BottomPlayer.transform.position;
         BotDeathParticle.Play();
         particleDuration = Mathf.Max(particleDuration, BotDeathParticle.duration );
-
+        SoundEF.PlayOneShot(deathSFX);
         TopPlayer.SetActive(false);
         BottomPlayer.SetActive(false);
 
@@ -286,6 +291,17 @@ public class GameManager : MonoBehaviour
         whiteMaterial.SetFloat("_Fade", 1);
         blackMaterial.SetFloat("_Fade", 1);
     }
-
+    public void TriggerJumpSFX()
+    {
+        if (!SoundEF.isPlaying)
+        {
+            SoundEF.PlayOneShot(jump);
+        }
+        else
+        {
+            SoundEF.Stop();
+            SoundEF.Play();
+        }
+    }
     
 }
