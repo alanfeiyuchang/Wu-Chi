@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetButton("Jump"))
 		{
 			jump = true;
-			GameManager.instance.TriggerJumpSFX();
 		}
 
 	}

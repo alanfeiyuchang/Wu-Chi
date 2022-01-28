@@ -282,6 +282,7 @@ public class CharacterController2d : MonoBehaviour
 			// Add a vertical force to the player.
 			if(jump && jumpTimeOut <= 0f)
             {
+				GameManager.instance.TriggerJumpSFX();
 				m_Grounded = false;
 				newVelocity.Set(0.0f, 0.0f);
 				m_Rigidbody2D.velocity = newVelocity;
@@ -294,7 +295,7 @@ public class CharacterController2d : MonoBehaviour
 		}
         else
         {
-			jumpTimeOut = 0.5f;
+			jumpTimeOut = 0.3f;
         }
 	}
 	private void Flip()
